@@ -4,7 +4,8 @@ import './index.css';
 import TotalCompensation from './App';
 import * as serviceWorker from './serviceWorker';
 
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-datetime/css/react-datetime.css';
 
 
 ReactDOM.render(<TotalCompensation />, document.getElementById('root'));

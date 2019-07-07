@@ -37,7 +37,7 @@ class Grants extends React.Component {
   getCellActions = (column, row) => {
     const deleteRowActions = [
       {
-        icon: <button className="deleteGrantRowButton">Delete</button>,
+        icon: <span className="glyphicon glyphicon-remove" />,
         callback: () => {
           const rows = [...this.props.grantRows];
           rows.splice(row.idx, 1); //
@@ -47,7 +47,7 @@ class Grants extends React.Component {
     ];
     const clearEarlyTerminationDateActions = [
       {
-        icon: <button className="clearTerminationDateButton">Clear</button>,
+        icon: <span className="glyphicon glyphicon-remove-circle" />,
         callback: () => {
           console.log(row.idx);
           this.props.onGrantRowChange(
