@@ -1,72 +1,67 @@
 import React from 'react';
 import ReactDataGrid from "react-data-grid";
+import {DateEditor, DateFormatter, moment} from "./DateUtils.js"
 
 const columns = [
-  {key: 'name', name: 'Grant Name', editable: true},
-  {key: 'symbol', name: 'Symbol', editable: true},
-  {key: 'quantity', name: 'Quantity', editable: true},
-  {key: 'strikePrice', name: 'Strike Price', editable: true},
+  {key: 'effectiveDate', name: 'Effecive Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
+  {key: 'salary', name: 'Salary', editable: true, format: 'currency'},
   {key: 'action', name: ''}
-  //{key: 'grantDate', name: 'Grant Date', editable: true},
-  //{key: 'earlyTerminationDate', name: 'Early Termination Date', editable: true},
 ]
 
-export const Grant = () => ({name: '', symbol: '', quantity: 0, strikePrice: 0});//, grantDate: new Date(), earlyTerminationDate: null});
+export const Salary = () => ({effectiveDate: moment(), salary: 0});
 
-class Grants extends React.Component {
+class BaseSalary extends React.Component {
 
-  deleteRow = (id) => {
-    let rows = this.props.grantRows.slice();
-    rows = rows.filter(row => row.id !== id)
-    this.props.onGrantRowChange(rows)
+  addRow = () => {
+    this.props.onRowChange(this.props.rows.concat([Salary()]));
   }
 
-  addGrantRow = () => {
-    this.props.onGrantRowChange(this.props.grantRows.concat([Grant()]));
-  }
-
-  onGridRowsUpdated = ({ fromRow, toRow, updated }) => {
-    var rows = this.props.grantRows.slice();
+  onRowsUpdated = ({ fromRow, toRow, updated }) => {
+    var rows = this.props.rows.slice();
     for (let i = fromRow; i <= toRow; i++) {
       rows[i] = { ...rows[i], ...updated };
     }
-    this.props.onGrantRowChange(rows);
+    this.props.onRowChange(rows);
   };
 
   getCellActions = (column, row) => {
-    const cellActions = [
+    const deleteRowActions = [
       {
-        icon: <button className="deleteGrantRowButton">Delete</button>,
+        icon: <span className="glyphicon glyphicon-remove" />,
         callback: () => {
-          const rows = [...this.props.grantRows];
-          rows.splice(row.index, 1); //
-          this.props.onGrantRowChange(rows);
+          const rows = [...this.props.rows];
+          rows.splice(row.idx, 1); //
+          this.props.onRowChange(rows);
         }
       }
     ];
-    return column.key === "action" ? cellActions : null;
+    if (column.key === "action") {
+      return deleteRowActions;
+    } else {
+      return null;
+    }
   };
 
   render() {
     return (
       <div className="grants">
       <ReactDataGrid
-        columns={grantColumns}
-        rowGetter={i => this.props.grantRows[i]}
-        rowsCount={this.props.grantRows.length}
-        onGridRowsUpdated={this.onGridRowsUpdated}
+        columns={columns}
+        rowGetter={i => ({...this.props.rows[i], idx: i})}
+        rowsCount={this.props.rows.length}
+        onGridRowsUpdated={this.onRowsUpdated}
         enableCellSelect={true}
         getCellActions={this.getCellActions}
       />
       <button
-        className="addGrantRowButton"
-        onClick={this.addGrantRow}
+        className="addRowButton"
+        onClick={this.addRow}
       >
-        Add Grant
+        Add Salary
       </button>
     </div>
     );
   }
 }
 
-export default Grants;
+export default BaseSalary;

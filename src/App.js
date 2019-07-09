@@ -1,30 +1,46 @@
 import React from 'react';
 import Grants, {Grant} from './Grants.js';
+import BaseSalary, {Salary} from './BaseSalary.js';
+import TotalCompensation from './TotalCompensation.js';
 import './App.css';
 
 
-class TotalCompensation extends React.Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      grantRows: [Grant()]
+      grantRows: [Grant()],
+      salaries: [Salary()],
     }
   }
 
-  setGrantRowState(newGrantRows) {
+  setGrants(newGrantRows) {
     this.setState({
       grantRows: newGrantRows
     });
   };
 
+  setSalaries(newSalaries) {
+    this.setState({
+      salaries: newSalaries
+    });
+  };
+
   render() {
     return (
-      <Grants
-        grantRows={this.state.grantRows}
-        onGrantRowChange={this.setGrantRowState.bind(this)} />
+      <div className="totalCompCalc">
+        <Grants
+          grantRows={this.state.grantRows}
+          onGrantRowChange={this.setGrants.bind(this)} />
+        <BaseSalary
+          rows={this.state.salaries}
+          onRowChange={this.setSalaries.bind(this)} />
+        <TotalCompensation
+          salaries={this.state.salaries}/>
+      </div>
     );
   }
 }
 
-export default TotalCompensation;
+export default App;
