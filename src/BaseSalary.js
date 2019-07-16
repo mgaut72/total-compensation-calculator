@@ -13,7 +13,6 @@ export const Salary = () => ({effectiveDate: moment(), salary: 0});
 export const initialSalaries = [
   Salary()
 ]
-
 class BaseSalary extends React.Component {
 
   addRow = () => {

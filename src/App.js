@@ -6,6 +6,8 @@ import VestingSchedules, {initialSchedules} from './VestingSchedules.js';
 import getBaseSalaryPerYear from './SalaryUtils.js'
 import getGrantVests from './GrantUtils.js'
 import './App.css';
+require('moment-json-parser').overrideDefault();
+
 
 const getScheduleForGrant = (g, ss) => {
   return ss.find(s => s.name === g.vestingSchedule);
@@ -40,6 +42,25 @@ class App extends React.Component {
       vestingSchedules: newSchedules
     });
   };
+
+  saveToLocal() {
+    localStorage.setItem('grants.v1', JSON.stringify(this.state.grants));
+    localStorage.setItem('salaries.v1', JSON.stringify(this.state.salaries));
+    localStorage.setItem('vestingSchedules.v1', JSON.stringify(this.state.vestingSchedules));
+  }
+
+  loadFromLocal() {
+    this.setSalaries(JSON.parse(localStorage.getItem('salaries.v1')))
+    this.setVestingSchedules(JSON.parse(localStorage.getItem('vestingSchedules.v1')))
+    this.setGrants(JSON.parse(localStorage.getItem('grants.v1')))
+    this.logState()
+  }
+
+  logState() {
+    console.log(this.state.grants);
+    console.log(this.state.salaries);
+    console.log(this.state.vestingSchedules);
+  }
 
   async getAllGrantData() {
     let grants =  [];
@@ -77,6 +98,18 @@ class App extends React.Component {
   render() {
     return (
       <div className="totalCompCalc">
+      <button
+        className="saveToLocal"
+        onClick={this.saveToLocal.bind(this)}
+      >
+        Save to Local Storage
+      </button>
+      <button
+        className="loadFromLocal"
+        onClick={this.loadFromLocal.bind(this)}
+      >
+        Load from Local Storage
+      </button>
         <BaseSalary
           rows={this.state.salaries}
           onRowChange={this.setSalaries.bind(this)} />

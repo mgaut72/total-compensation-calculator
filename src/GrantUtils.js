@@ -15,9 +15,6 @@ async function getGrantVestValueByYear(grant, vestingSchedule) {
   let vestValue = 0;
   let year = 0;
   for (let v of vests) {
-    console.log(v.x.getFullYear())
-    console.log(year)
-    console.log(vestValue)
     if(v.x.getFullYear() !== year) {
       if (vestValue !== 0 && year !== 0) {
         vestValueByYear.push({x: new Date(year, 0, 1), y: vestValue});
@@ -30,7 +27,6 @@ async function getGrantVestValueByYear(grant, vestingSchedule) {
   if (vestValue !== 0) {
     vestValueByYear.push({x: new Date(year, 0, 1), y: vestValue});
   }
-  console.log(vestValueByYear)
   return vestValueByYear;
 }
 

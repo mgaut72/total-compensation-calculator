@@ -50,7 +50,7 @@ export class DateFormatter extends React.Component {
 
   render() {
     let value = this.props.value;
-    return value ? <div title={value.format("L")}>{value.format("L")}</div> : <div/>
+    return value ? <div title={moment(value).format("L")}>{moment(value).format("L")}</div> : <div/>
   }
 }
 
