@@ -1,20 +1,34 @@
 import React from 'react';
 import ReactDataGrid from "react-data-grid";
 import {DateEditor, DateFormatter, moment} from "./DateUtils.js"
+import { Editors } from "react-data-grid-addons";
+const { DropDownEditor } = Editors;
 
-const grantColumns = [
-  {key: 'name', name: 'Grant Name', editable: true},
-  {key: 'symbol', name: 'Symbol', editable: true},
-  {key: 'quantity', name: 'Quantity', editable: true},
-  {key: 'strikePrice', name: 'Strike Price', editable: true},
-  {key: 'grantDate', name: 'Grant Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
-  {key: 'earlyTerminationDate', name: 'Early Termination Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
-  {key: 'action', name: ''}
+
+export const Grant = () => ({name: '', symbol: 'Z', quantity: 0, strikePrice: 0, grantDate: moment(), earlyTerminationDate: null, vestingSchedule: ''});
+
+export const initialGrants = [
+  Grant()
 ]
 
-export const Grant = () => ({name: '', symbol: '', quantity: 0, strikePrice: 0, grantDate: moment(), earlyTerminationDate: null});
-
 class Grants extends React.Component {
+
+  getVestingScheduleOptions = () => {
+    return this.props.vestingSchedules.map(s => ({id: s.name, value: s.name}));
+  }
+
+  VestingScheduleEditor = <DropDownEditor options={this.getVestingScheduleOptions()}/>
+
+  grantColumns = [
+    {key: 'name', name: 'Grant Name', editable: true},
+    {key: 'symbol', name: 'Symbol', editable: true},
+    {key: 'vestingSchedule', name: 'Vesting Schedule', editor: this.VestingScheduleEditor},
+    {key: 'quantity', name: 'Quantity', editable: true},
+    {key: 'strikePrice', name: 'Strike Price', editable: true},
+    {key: 'grantDate', name: 'Grant Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
+    {key: 'earlyTerminationDate', name: 'Early Termination Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
+    {key: 'action', name: ''}
+  ]
 
   deleteRow = (id) => {
     let rows = this.props.grantRows.slice();
@@ -49,7 +63,6 @@ class Grants extends React.Component {
       {
         icon: <span className="glyphicon glyphicon-remove-circle" />,
         callback: () => {
-          console.log(row.idx);
           this.props.onGrantRowChange(
             this.props.grantRows.map((grant, idx) => {
               return idx === row.idx ? {...grant, earlyTerminationDate: null} : grant
@@ -70,7 +83,7 @@ class Grants extends React.Component {
     return (
       <div className="grants">
       <ReactDataGrid
-        columns={grantColumns}
+        columns={this.grantColumns}
         rowGetter={i => ({...this.props.grantRows[i], idx: i})}
         rowsCount={this.props.grantRows.length}
         onGridRowsUpdated={this.onGridRowsUpdated}

@@ -1,6 +1,5 @@
 function getBaseSalaryPerYear(raisesWithMoments) {
   const raises = raisesWithMoments.map(r => ({effectiveDate: r.effectiveDate.toDate(), salary: r.salary}));
-  console.log(raises);
   var salaries = [];
   var startYear = 10000000;
   var endYear = 0;
@@ -15,7 +14,6 @@ function getBaseSalaryPerYear(raisesWithMoments) {
     salary = getSalaryForYear(getRelevantRaises(raises, year), year);
     salaries.push({x: new Date(year, 0, 1), y: salary*1});
   }
-  console.log(salaries);
   return salaries;                 
 }
 

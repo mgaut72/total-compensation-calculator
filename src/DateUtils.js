@@ -36,7 +36,7 @@ export class DateEditor extends React.Component {
 
   render(){
     return (
-      <div style={{"position":"fixed", "zIndex":"10000000000"}}>
+      <div style={{"zIndex":"10000000000"}}>
         <Datetime timeFormat={false} inputProps={{ autoFocus: true }} onChange={(moment) => this.handleDate(moment)} />
       </div>
     );

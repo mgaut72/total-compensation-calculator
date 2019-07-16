@@ -1,6 +1,5 @@
 import React from 'react';
 import CanvasJSReact from './lib/canvasjs.react'
-import getBaseSalaryPerYear from './SalaryUtils.js'
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 /**
@@ -23,6 +22,21 @@ class TotalCompensation extends React.Component {
 		this.chart.render();
 	}
 
+  toolTipContent(e) {
+	var str = "";
+	var total = 0;
+	var str2, str3;
+	for (var i = 0; i < e.entries.length; i++){
+    var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + "\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+Math.round(e.entries[i].dataPoint.y)+"</strong><br/>";
+		total = e.entries[i].dataPoint.y + total;
+		str = str.concat(str1);
+	}
+	str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
+  total = Math.round(total);
+	str3 = "<span style = \"color:Tomato\">Total:</span><strong> $"+total+"</strong><br/>";
+	return (str2.concat(str)).concat(str3);
+}
+
   toData(name, dataPoints) {
     return {
       type: "stackedColumn",
@@ -33,10 +47,6 @@ class TotalCompensation extends React.Component {
       dataPoints: dataPoints,
       xValueType: "datetime",
     }
-  }
-
-  getBaseSalaryData() {
-    return this.toData("Base", getBaseSalaryPerYear(this.props.salaries));
   }
 
   render() {
@@ -56,13 +66,13 @@ class TotalCompensation extends React.Component {
       toolTip: {
         shared: true,
         reversed: true,
+        content: this.toolTipContent
       },
       legend:{
         cursor: "pointer",
-        reversed: true,
         itemclick: this.toggleDataSeries
       },
-      data: [this.getBaseSalaryData()]
+      data: this.props.data.map(d => this.toData(d.name, d.data))
     }
     return (
       <div>
