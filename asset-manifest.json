@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "mattgautreau.com/total-compensation-calculator/static/css/main.2cce8147.chunk.css",
-    "main.js": "mattgautreau.com/total-compensation-calculator/static/js/main.ef97de46.chunk.js",
-    "main.js.map": "mattgautreau.com/total-compensation-calculator/static/js/main.ef97de46.chunk.js.map",
-    "runtime~main.js": "mattgautreau.com/total-compensation-calculator/static/js/runtime~main.1ad81bfd.js",
-    "runtime~main.js.map": "mattgautreau.com/total-compensation-calculator/static/js/runtime~main.1ad81bfd.js.map",
-    "static/css/2.9f42c2f7.chunk.css": "mattgautreau.com/total-compensation-calculator/static/css/2.9f42c2f7.chunk.css",
-    "static/js/2.782d9646.chunk.js": "mattgautreau.com/total-compensation-calculator/static/js/2.782d9646.chunk.js",
-    "static/js/2.782d9646.chunk.js.map": "mattgautreau.com/total-compensation-calculator/static/js/2.782d9646.chunk.js.map",
-    "index.html": "mattgautreau.com/total-compensation-calculator/index.html",
-    "precache-manifest.0e524a7518c1fa6c8a65713ee3154989.js": "mattgautreau.com/total-compensation-calculator/precache-manifest.0e524a7518c1fa6c8a65713ee3154989.js",
-    "service-worker.js": "mattgautreau.com/total-compensation-calculator/service-worker.js",
-    "static/css/2.9f42c2f7.chunk.css.map": "mattgautreau.com/total-compensation-calculator/static/css/2.9f42c2f7.chunk.css.map",
-    "static/css/main.2cce8147.chunk.css.map": "mattgautreau.com/total-compensation-calculator/static/css/main.2cce8147.chunk.css.map"
+    "main.css": "/total-compensation-calculator/static/css/main.2cce8147.chunk.css",
+    "main.js": "/total-compensation-calculator/static/js/main.abb846ce.chunk.js",
+    "main.js.map": "/total-compensation-calculator/static/js/main.abb846ce.chunk.js.map",
+    "runtime~main.js": "/total-compensation-calculator/static/js/runtime~main.e4cbf357.js",
+    "runtime~main.js.map": "/total-compensation-calculator/static/js/runtime~main.e4cbf357.js.map",
+    "static/css/2.9f42c2f7.chunk.css": "/total-compensation-calculator/static/css/2.9f42c2f7.chunk.css",
+    "static/js/2.782d9646.chunk.js": "/total-compensation-calculator/static/js/2.782d9646.chunk.js",
+    "static/js/2.782d9646.chunk.js.map": "/total-compensation-calculator/static/js/2.782d9646.chunk.js.map",
+    "index.html": "/total-compensation-calculator/index.html",
+    "precache-manifest.8eecbf3276b44f85c45e4c2ee7a5f24f.js": "/total-compensation-calculator/precache-manifest.8eecbf3276b44f85c45e4c2ee7a5f24f.js",
+    "service-worker.js": "/total-compensation-calculator/service-worker.js",
+    "static/css/2.9f42c2f7.chunk.css.map": "/total-compensation-calculator/static/css/2.9f42c2f7.chunk.css.map",
+    "static/css/main.2cce8147.chunk.css.map": "/total-compensation-calculator/static/css/main.2cce8147.chunk.css.map"
   }
 }
