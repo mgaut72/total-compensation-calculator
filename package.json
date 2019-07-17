@@ -1,6 +1,6 @@
 {
   "name": "total-compensation-calculator",
-  "homepage": "http://mattgautreau.com/total-compensation-calculator",
+  "homepage": "https://mattgautreau.com/total-compensation-calculator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
