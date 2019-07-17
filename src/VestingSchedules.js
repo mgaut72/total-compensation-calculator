@@ -10,7 +10,7 @@ const columns = [
   {key: 'action', name: ''}
 ]
 
-export const Schedule = () => ({name: '', durationMonths: 0, frequencyMonths: 0, cliffMonths: 0, percentPerVest: 'EVEN'});
+export const Schedule = () => ({name: 'Schedule', durationMonths: 0, frequencyMonths: 0, cliffMonths: 0, percentPerVest: 'EVEN'});
 
 export const initialSchedules = [
   {name: 'AMZN Signing', durationMonths: 48, frequencyMonths: 6, cliffMonths: 0, percentPerVest: '0,5,0,15,20,20,20,20'},

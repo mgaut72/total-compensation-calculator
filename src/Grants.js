@@ -13,22 +13,19 @@ export const initialGrants = [
 
 class Grants extends React.Component {
 
-  getVestingScheduleOptions = () => {
-    return this.props.vestingSchedules.map(s => ({id: s.name, value: s.name}));
+  grantColumns = () => {
+    console.log(this.props.vestingSchedules)
+    return [
+      {key: 'name', name: 'Grant Name', editable: true},
+      {key: 'symbol', name: 'Symbol', editable: true},
+      {key: 'vestingSchedule', name: 'Vesting Schedule', hash: new Date().getTime(), editor: <DropDownEditor options={this.props.vestingSchedules.map(s => ({id: s.name, value: s.name}))}/>},  // hash is a hack to break ReactDataGrid's cache
+      {key: 'quantity', name: 'Quantity', editable: true},
+      {key: 'strikePrice', name: 'Strike Price', editable: true},
+      {key: 'grantDate', name: 'Grant Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
+      {key: 'earlyTerminationDate', name: 'Early Termination Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
+      {key: 'action', name: ''}
+    ]
   }
-
-  VestingScheduleEditor = <DropDownEditor options={this.getVestingScheduleOptions()}/>
-
-  grantColumns = [
-    {key: 'name', name: 'Grant Name', editable: true},
-    {key: 'symbol', name: 'Symbol', editable: true},
-    {key: 'vestingSchedule', name: 'Vesting Schedule', editor: this.VestingScheduleEditor},
-    {key: 'quantity', name: 'Quantity', editable: true},
-    {key: 'strikePrice', name: 'Strike Price', editable: true},
-    {key: 'grantDate', name: 'Grant Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
-    {key: 'earlyTerminationDate', name: 'Early Termination Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
-    {key: 'action', name: ''}
-  ]
 
   deleteRow = (id) => {
     let rows = this.props.grantRows.slice();
@@ -83,7 +80,7 @@ class Grants extends React.Component {
     return (
       <div className="grants">
       <ReactDataGrid
-        columns={this.grantColumns}
+        columns={this.grantColumns()}
         rowGetter={i => ({...this.props.grantRows[i], idx: i})}
         rowsCount={this.props.grantRows.length}
         onGridRowsUpdated={this.onGridRowsUpdated}
