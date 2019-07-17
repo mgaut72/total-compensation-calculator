@@ -14,7 +14,6 @@ export const initialGrants = [
 class Grants extends React.Component {
 
   grantColumns = () => {
-    console.log(this.props.vestingSchedules)
     return [
       {key: 'name', name: 'Grant Name', editable: true},
       {key: 'symbol', name: 'Symbol', editable: true},

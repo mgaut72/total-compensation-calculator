@@ -1,12 +1,21 @@
 const alphavantagekey = 'UK51DXH627CUGM2W';
 
+const ONE_HOUR = 60 * 60 * 1000;
+
+let priceCache = {};
+
 async function getPrice(ticker) {
-  /*
+  if (ticker in priceCache) {
+    let cachedData = priceCache[ticker];
+    if (((new Date()) - cachedData.date) < ONE_HOUR) {
+      return cachedData.price;
+    }
+  }
+
   const resp = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${alphavantagekey}`).then(r => r.json());
-  console.log(resp);
-  return resp["Global Quote"]["05. price"];
-  */
-  return 48.85
+  const price = resp["Global Quote"]["05. price"];
+  priceCache[ticker] = {price: price, date: new Date()}
+  return price;
 }
 
 async function getGrantVestValueByYear(grant, vestingSchedule) {
