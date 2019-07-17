@@ -11,8 +11,9 @@ const columns = [
 export const Salary = () => ({effectiveDate: moment(), salary: 0});
 
 export const initialSalaries = [
-  Salary()
+  {effectiveDate: moment(), salary: 100000},
 ]
+
 class BaseSalary extends React.Component {
 
   addRow = () => {

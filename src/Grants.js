@@ -8,7 +8,7 @@ const { DropDownEditor } = Editors;
 export const Grant = () => ({name: '', symbol: 'Z', quantity: 0, strikePrice: 0, grantDate: moment(), earlyTerminationDate: null, vestingSchedule: ''});
 
 export const initialGrants = [
-  Grant()
+  {name: 'Sample Grant', symbol: 'Z', quantity: 1000, strikePrice: 0, grantDate: moment(), earlyTerminationDate: null, vestingSchedule: 'Quarterly for 4 Years'},
 ]
 
 class Grants extends React.Component {
