@@ -1,10 +1,12 @@
 {
   "name": "total-compensation-calculator",
+  "homepage": "http://mattgautreau.com/total-compensation-calculator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
     "canvasjs": "^1.8.1",
+    "gh-pages": "^2.0.1",
     "moment": "^2.24.0",
     "moment-json-parser": "^0.9.1",
     "react": "^16.8.6",
@@ -19,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
