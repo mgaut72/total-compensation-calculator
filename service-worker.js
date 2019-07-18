@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/total-compensation-calculator/precache-manifest.f5d2616009a9843e1b0916e6cfcc2282.js"
+  "/total-compensation-calculator/precache-manifest.6605e9f3c3ae1241fdb2daa47e946b4a.js"
 );
 
 self.addEventListener('message', (event) => {
