@@ -75,7 +75,7 @@ class TotalCompensation extends React.Component {
       data: this.props.data.map(d => this.toData(d.name, d.data))
     }
     return (
-      <div>
+      <div style={{background: "transparent"}} class="jumbotron">
         <CanvasJSChart options = {options}
           onRef={ref => this.chart = ref}
         />

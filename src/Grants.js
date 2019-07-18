@@ -77,22 +77,25 @@ class Grants extends React.Component {
 
   render() {
     return (
-      <div className="grants">
-      <ReactDataGrid
-        columns={this.grantColumns()}
-        rowGetter={i => ({...this.props.grantRows[i], idx: i})}
-        rowsCount={this.props.grantRows.length}
-        onGridRowsUpdated={this.onGridRowsUpdated}
-        enableCellSelect={true}
-        getCellActions={this.getCellActions}
-      />
-      <button
-        className="btn btn-primary"
-        onClick={this.addGrantRow}
-      >
-        Add Grant
-      </button>
-    </div>
+      <div style={{background: "transparent"}} class="jumbotron">
+        <h2>Grants</h2>
+        <div class="relativeWrapper">
+          <ReactDataGrid
+            columns={this.grantColumns()}
+            rowGetter={i => ({...this.props.grantRows[i], idx: i})}
+            rowsCount={this.props.grantRows.length}
+            onGridRowsUpdated={this.onGridRowsUpdated}
+            enableCellSelect={true}
+            getCellActions={this.getCellActions}
+          />
+        </div>
+        <button
+          className="btn btn-primary"
+          onClick={this.addGrantRow}
+        >
+          Add Grant
+        </button>
+      </div>
     );
   }
 }

@@ -54,22 +54,25 @@ class VestingSchedules extends React.Component {
 
   render() {
     return (
-      <div className="vestingSchedules">
-      <ReactDataGrid
-        columns={columns}
-        rowGetter={i => ({...this.props.rows[i], idx: i})}
-        rowsCount={this.props.rows.length}
-        onGridRowsUpdated={this.onRowsUpdated}
-        enableCellSelect={true}
-        getCellActions={this.getCellActions}
-      />
-      <button
-        className="btn btn-primary"
-        onClick={this.addRow}
-      >
-        Add Vesting Schedule
-      </button>
-    </div>
+      <div style={{background: "transparent"}} class="jumbotron">
+        <h2>Vesting Schedules</h2>
+        <div class="relativeWrapper">
+          <ReactDataGrid
+            columns={columns}
+            rowGetter={i => ({...this.props.rows[i], idx: i})}
+            rowsCount={this.props.rows.length}
+            onGridRowsUpdated={this.onRowsUpdated}
+            enableCellSelect={true}
+            getCellActions={this.getCellActions}
+          />
+        </div>
+        <button
+          className="btn btn-primary"
+          onClick={this.addRow}
+        >
+          Add Vesting Schedule
+        </button>
+      </div>
     );
   }
 }

@@ -97,19 +97,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="totalCompCalc">
-      <button
-        className="btn btn-primary"
-        onClick={this.saveToLocal.bind(this)}
-      >
-        Save to Local Storage
-      </button>
-      <button
-        className="btn btn-primary"
-        onClick={this.loadFromLocal.bind(this)}
-      >
-        Load from Local Storage
-      </button>
+      <div>
+        <h1>Total Compensation Calculator</h1>
+        <button
+          className="btn btn-primary"
+          onClick={this.saveToLocal.bind(this)}
+        >
+          Save to Local Storage
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={this.loadFromLocal.bind(this)}
+        >
+          Load from Local Storage
+        </button>
         <BaseSalary
           rows={this.state.salaries}
           onRowChange={this.setSalaries.bind(this)} />
