@@ -99,13 +99,13 @@ class App extends React.Component {
     return (
       <div className="totalCompCalc">
       <button
-        className="saveToLocal"
+        className="btn btn-primary"
         onClick={this.saveToLocal.bind(this)}
       >
         Save to Local Storage
       </button>
       <button
-        className="loadFromLocal"
+        className="btn btn-primary"
         onClick={this.loadFromLocal.bind(this)}
       >
         Load from Local Storage

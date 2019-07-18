@@ -64,7 +64,7 @@ class VestingSchedules extends React.Component {
         getCellActions={this.getCellActions}
       />
       <button
-        className="addRowButton"
+        className="btn btn-primary"
         onClick={this.addRow}
       >
         Add Vesting Schedule

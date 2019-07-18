@@ -87,7 +87,7 @@ class Grants extends React.Component {
         getCellActions={this.getCellActions}
       />
       <button
-        className="addGrantRowButton"
+        className="btn btn-primary"
         onClick={this.addGrantRow}
       >
         Add Grant
