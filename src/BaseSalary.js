@@ -5,7 +5,7 @@ import {DateEditor, DateFormatter, moment} from "./DateUtils.js"
 const columns = [
   {key: 'effectiveDate', name: 'Effecive Date', editable: true, editor:<DateEditor/>, formatter:<DateFormatter/>},
   {key: 'salary', name: 'Salary', editable: true, format: 'currency'},
-  {key: 'action', name: ''}
+  {key: 'action', name: '', width: 35}
 ]
 
 export const Salary = () => ({effectiveDate: moment(), salary: 0});
@@ -31,7 +31,7 @@ class BaseSalary extends React.Component {
   getCellActions = (column, row) => {
     const deleteRowActions = [
       {
-        icon: <span className="glyphicon glyphicon-remove" />,
+        icon: <i class="fas fa-times-circle"></i>,
         callback: () => {
           const rows = [...this.props.rows];
           rows.splice(row.idx, 1); //

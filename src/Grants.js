@@ -8,7 +8,8 @@ const { DropDownEditor } = Editors;
 export const Grant = () => ({name: '', symbol: 'Z', quantity: 0, strikePrice: 0, grantDate: moment(), earlyTerminationDate: null, vestingSchedule: ''});
 
 export const initialGrants = [
-  {name: 'Sample Grant', symbol: 'Z', quantity: 1000, strikePrice: 0, grantDate: moment(), earlyTerminationDate: null, vestingSchedule: 'Quarterly for 4 Years'},
+  {name: 'Sample Grant 1', symbol: 'Z', quantity: 4000, strikePrice: 30, grantDate: moment(), earlyTerminationDate: null, vestingSchedule: 'Z Signing'},
+  {name: 'Sample Grant 2', symbol: 'Z', quantity: 1000, strikePrice: 0, grantDate: moment().add(1, 'y'), earlyTerminationDate: null, vestingSchedule: 'Quarterly for 4 Years'},
 ]
 
 class Grants extends React.Component {
@@ -47,7 +48,7 @@ class Grants extends React.Component {
   getCellActions = (column, row) => {
     const deleteRowActions = [
       {
-        icon: <span className="glyphicon glyphicon-remove" />,
+        icon: <i class="fas fa-times-circle"></i>,
         callback: () => {
           const rows = [...this.props.grantRows];
           rows.splice(row.idx, 1); //
@@ -57,7 +58,7 @@ class Grants extends React.Component {
     ];
     const clearEarlyTerminationDateActions = [
       {
-        icon: <span className="glyphicon glyphicon-remove-circle" />,
+        icon: <i class="fas fa-times-circle"></i>,
         callback: () => {
           this.props.onGrantRowChange(
             this.props.grantRows.map((grant, idx) => {

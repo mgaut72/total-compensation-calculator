@@ -37,7 +37,7 @@ class VestingSchedules extends React.Component {
   getCellActions = (column, row) => {
     const deleteRowActions = [
       {
-        icon: <span className="glyphicon glyphicon-remove" />,
+        icon: <i class="fas fa-times-circle"></i>,
         callback: () => {
           const rows = [...this.props.rows];
           rows.splice(row.idx, 1); //
