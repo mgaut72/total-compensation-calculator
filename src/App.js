@@ -111,6 +111,8 @@ class App extends React.Component {
         >
           Load from Local Storage
         </button>
+        <TotalCompensation
+          data={this.state.compensationData} />
         <BaseSalary
           rows={this.state.salaries}
           onRowChange={this.setSalaries.bind(this)} />
@@ -121,8 +123,6 @@ class App extends React.Component {
         <VestingSchedules
           rows={this.state.vestingSchedules}
           onRowChange={this.setVestingSchedules.bind(this)} />
-        <TotalCompensation
-          data={this.state.compensationData} />
       </div>
     );
   }

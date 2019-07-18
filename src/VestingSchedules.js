@@ -15,6 +15,7 @@ export const Schedule = () => ({name: 'Schedule', durationMonths: 0, frequencyMo
 export const initialSchedules = [
   {name: 'AMZN Signing', durationMonths: 48, frequencyMonths: 6, cliffMonths: 0, percentPerVest: '0,5,0,15,20,20,20,20'},
   {name: 'Z Signing', durationMonths: 48, frequencyMonths: 1, cliffMonths: 12, percentPerVest: 'EVEN'},
+  {name: 'MSFT Signing (Legacy)', durationMonths: 48, frequencyMonths: 6, cliffMonths: 0, percentPerVest: '25,0,25,0,25,0,25,0'},
   {name: 'Semi-Annually for 2 years', durationMonths: 24, frequencyMonths: 6, cliffMonths: 0, percentPerVest: 'EVEN'},
   {name: 'Quarterly for 4 Years', durationMonths: 48, frequencyMonths: 3, cliffMonths: 0, percentPerVest: 'EVEN'},
   {name: 'Monthly for 1 Year', durationMonths: 48, frequencyMonths: 3, cliffMonths: 0, percentPerVest: 'EVEN'},
